@@ -69,7 +69,7 @@ public class Updater {
 	            final BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 	            final JSONArray array = (JSONArray) JSONValue.parse(reader.readLine());
 	            if (array.isEmpty()) {
-	            	System.err.println("[" + plugin.getName() + " - Updater] Could not connect to BukkitDev, is it down?");
+	            	System.err.println("[" + plugin.getName() + " - Автообновление] Не удалось подключиться к BukkitDev, сайт не работает?");
 					try {
 						thread.join();
 					} catch (InterruptedException x) {
@@ -85,7 +85,7 @@ public class Updater {
 	            }
 	            return true;
 	        } catch (IOException e) {
-				System.err.println("[" + plugin.getName() + " - Updater] Could not connect to BukkitDev, is it down?");
+				System.err.println("[" + plugin.getName() + " - Автообновление] Не удалось подключиться к BukkitDev, сайт не работает?");
 				try {
 					thread.join();
 				} catch (InterruptedException x) {
@@ -117,7 +117,7 @@ public class Updater {
 	        		return;
 	        	}
 	        }
-	        System.out.println("[CS-CoreLib - Updater] " + plugin.getName() + " is up to date!");
+	        System.out.println("[CS-CoreLib - Автообновление] Установлен плагин " + plugin.getName() + " последней версии!");
 	        try {
 				thread.join();
 			} catch (InterruptedException x) {
@@ -151,8 +151,8 @@ public class Updater {
 	    }
 
 		private void install() {
-			System.out.println("[CS-CoreLib - Updater] " + plugin.getName() + " is outdated!");
-			System.out.println("[CS-CoreLib - Updater] Downloading " + plugin.getName() + " v" + version);
+			System.out.println("[CS-CoreLib - Автообновление] Плагин " + plugin.getName() + " устарел!");
+			System.out.println("[CS-CoreLib - Автообновление] Загрузка " + plugin.getName() + " v" + version);
 			plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
 				
 				@Override
@@ -171,9 +171,9 @@ public class Updater {
 			            }
 			        } catch (Exception ex) {
 			        	System.err.println(" ");
-			        	System.err.println("#################### - ERROR - ####################");
-						System.err.println("Could not auto-update " + plugin.getName());
-						System.err.println("#################### - ERROR - ####################");
+			        	System.err.println("#################### - ОШИБКА - ####################");
+						System.err.println("Не удалось обновить " + plugin.getName());
+						System.err.println("#################### - ОШИБКА - ####################");
 						System.err.println(" ");
 						ex.printStackTrace();
 			        } finally {
@@ -181,9 +181,9 @@ public class Updater {
 			                if (input != null) input.close();
 			                if (output != null) output.close();
 			                System.err.println(" ");
-			                System.err.println("#################### - UPDATE - ####################");
-			                System.err.println(plugin.getName() + " was successfully updated (" + local + " -> " + version + ")");
-			                System.err.println("Please restart your Server in order to use the new Version");
+			                System.err.println("#################### - ОБНОВЛЕНИЕ - ####################");
+			                System.err.println(plugin.getName() + " был успешно обновлён (" + local + " -> " + version + ")");
+			                System.err.println("Пожалуйста, перезагрузите сервер, чтобы использовать новую версию");
 			                System.err.println(" ");
 			            } catch (IOException e) {
 			            	e.printStackTrace();

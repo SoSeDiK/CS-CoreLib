@@ -1,6 +1,6 @@
 name: CS-CoreLib
 version: ${project.version}
-authors: [mrCookieSlime, John000708, AlexLander123]
+authors: [mrCookieSlime, John000708, AlexLander123, SoSeDiK]
 website: http://thebusybiscuit.github.io/
 
 main: me.mrCookieSlime.CSCoreLibPlugin.CSCoreLib
@@ -9,5 +9,5 @@ api-version: 1.13
 
 commands:
   cs_triggerinterface:
-    description: Background Command
-    usage: Dont use it
+    description: Отладочная команда
+    usage: Не используйте её

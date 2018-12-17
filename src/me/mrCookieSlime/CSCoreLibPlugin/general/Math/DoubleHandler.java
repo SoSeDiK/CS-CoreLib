@@ -8,19 +8,19 @@ public class DoubleHandler {
 		DecimalFormat format = new DecimalFormat("##.##");
 		
 		double d2 = d / 1000000000000000d;
-		if (d2 > 1) return format.format(d2).replace(",", ".") + "Q";
+		if (d2 > 1) return format.format(d2).replace(",", ".") + "П";
 		
 		d2 = d / 1000000000000d;
-		if (d2 > 1) return format.format(d2).replace(",", ".") + "T";
+		if (d2 > 1) return format.format(d2).replace(",", ".") + "Т";
 		
 		d2 = d / 1000000000d;
-		if (d2 > 1) return format.format(d2).replace(",", ".") + "B";
+		if (d2 > 1) return format.format(d2).replace(",", ".") + "Г";
 		
 		d2 = d / 1000000d;
-		if (d2 > 1) return format.format(d2).replace(",", ".") + "M";
+		if (d2 > 1) return format.format(d2).replace(",", ".") + "М";
 		
 		d2 = d / 1000d;
-		if (d2 > 1) return format.format(d2).replace(",", ".") + "K";
+		if (d2 > 1) return format.format(d2).replace(",", ".") + "к";
 		
 		return format.format(d).replace(",", ".");
 	}

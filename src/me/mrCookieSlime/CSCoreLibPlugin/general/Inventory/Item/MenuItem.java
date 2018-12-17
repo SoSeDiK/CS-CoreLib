@@ -16,7 +16,7 @@ public class MenuItem extends ItemStack {
 		im.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
-		lore.add(ChatColor.GREEN + "> Click to " + action);
+		lore.add(ChatColor.GREEN + "> Нажмите, чтобы " + action);
 		im.setLore(lore);
 		setItemMeta(im);
 		setDurability((short) durability);
@@ -28,7 +28,21 @@ public class MenuItem extends ItemStack {
 		im.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
-		lore.add(ChatColor.GREEN + "> Click to " + action);
+		lore.add(ChatColor.GREEN + "> Нажмите, чтобы " + action);
+		im.setLore(lore);
+		setItemMeta(im);
+		setDurability((short) durability);
+	}
+	// MY NEW
+	public MenuItem(Material type, String name, int durability, String action, String[] lores) {
+		super(type);
+		ItemMeta im = getItemMeta();
+		im.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
+		List<String> lore = new ArrayList<String>();
+		lore.add("");
+		lore.add(ChatColor.GREEN + "> Нажмите, чтобы " + action);
+		for (int i = 0; i < lores.length; i++)
+			lore.add(ChatColor.translateAlternateColorCodes('&', lores[i]));
 		im.setLore(lore);
 		setItemMeta(im);
 		setDurability((short) durability);

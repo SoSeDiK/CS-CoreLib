@@ -221,7 +221,7 @@ public class Config {
 				if (this.contains(path + "_extra.custom-skull")) item = CustomSkull.getItem((ItemStack) item, this.getString(path + "_extra.custom-skull"));
 				if (this.contains(path + "_extra.custom-skullOwner") && !((ItemStack) item).getItemMeta().hasDisplayName()) {
 					ItemMeta im = ((ItemStack) item).getItemMeta();
-					im.setDisplayName(ChatColor.RESET + this.getString(path + "_extra.custom-skullOwner") + "'s Head");
+					im.setDisplayName(ChatColor.RESET + "Голова игрока " + this.getString(path + "_extra.custom-skullOwner"));
 					((ItemStack) item).setItemMeta(im);
 				}
 			}

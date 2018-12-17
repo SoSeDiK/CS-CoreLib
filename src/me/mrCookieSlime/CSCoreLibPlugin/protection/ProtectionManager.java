@@ -21,13 +21,13 @@ public class ProtectionManager {
 	public void registerNewModule(String name, ProtectionModule module) {
 		this.modules.add(module);
 		this.loadModuleMSG(name);
-		local.setDefaultValue("plugins." + name + ".no-block-access", "&4&l! &cSorry, but the Plugin &4" + name + " &cdoes not allow you to access this Block");
-		local.setDefaultValue("plugins." + name + ".no-block-breaking", "&4&l! &cSorry, but the Plugin &4" + name + " &cdoes not allow you to break this Block");
+		local.setDefaultValue("plugins." + name + ".no-block-access", "&4&l! &cИзвините, но плагин &4" + name + " &cне дал Вам доступа к этому блоку");
+		local.setDefaultValue("plugins." + name + ".no-block-breaking", "&4&l! &cИзвините, но плагин &4" + name + " &cне разрешает Вам разрушать этот блок");
 		local.save();
 	}
 
 	private void loadModuleMSG(String module) {
-		System.out.println("[CS-CoreLib - Protection] Loaded Protection Module \"" + module + "\"");
+		System.out.println("[CS-CoreLib - Protection] Загружен модуль защиты \"" + module + "\"");
 	}
 	
 	public ProtectionManager() {}

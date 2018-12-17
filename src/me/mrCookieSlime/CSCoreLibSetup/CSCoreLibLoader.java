@@ -35,17 +35,18 @@ public class CSCoreLibLoader {
 		if (plugin.getServer().getPluginManager().isPluginEnabled("CS-CoreLib")) return true;
 		else {
 			System.err.println(" ");
-			System.err.println("#################### - INFO - ####################");
+			System.err.println("################## - ИНФОРМАЦИЯ - ##################");
 			System.err.println(" ");
-			System.err.println(plugin.getName() + " could not be loaded.");
-			System.err.println("It appears that you have not installed CS-CoreLib");
-			System.err.println("Your Server will now try to download and install");
-			System.err.println("CS-CoreLib for you.");
-			System.err.println("You will be asked to restart your Server when it's finished.");
-			System.err.println("If this somehow fails, please download and install CS-CoreLib manually:");
+			System.err.println(plugin.getName() + " не может быть включен!");
+			System.err.println("Это случается, если CS-CoreLib не установлен");
+			System.err.println("Ваш сервер попробует загрузить и установить его.");
+			System.err.println("автоматически.");
+			System.err.println("После того, как процесс установки завершится,");
+			System.err.println("Вам будет предложено перезагрузить сервер.");
+			System.err.println("Если что-то пойдёт не так, установите CS-CoreLib вручную:");
 			System.err.println("https://dev.bukkit.org/projects/cs-corelib");
 			System.err.println(" ");
-			System.err.println("#################### - INFO - ####################");
+			System.err.println("################## - ИНФОРМАЦИЯ - ##################");
 			System.err.println(" ");
 			plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
 				
@@ -73,13 +74,13 @@ public class CSCoreLibLoader {
             return true;
         } catch (IOException e) {
         	System.err.println(" ");
-        	System.err.println("#################### - WARNING - ####################");
+        	System.err.println("################## - ПРЕДУПРЕЖДЕНИЕ - ##################");
 			System.err.println(" ");
-			System.err.println("Could not connect to BukkitDev.");
-			System.err.println("Please download & install CS-CoreLib manually:");
+			System.err.println("Не удалось подключиться к BukkitDev.");
+			System.err.println("Пожалуйста, установите CS-CoreLib вручную:");
 			System.err.println("https://dev.bukkit.org/projects/cs-corelib");
 			System.err.println(" ");
-			System.err.println("#################### - WARNING - ####################");
+			System.err.println("################## - ПРЕДУПРЕЖДЕНИЕ - ##################");
 			System.err.println(" ");
             return false;
         }
@@ -123,25 +124,25 @@ public class CSCoreLibLoader {
             }
         } catch (Exception ex) {
         	System.err.println(" ");
-        	System.err.println("#################### - WARNING - ####################");
+        	System.err.println("################## - ПРЕДУПРЕЖДЕНИЕ - ##################");
 			System.err.println(" ");
-			System.err.println("Failed to download CS-CoreLib");
-			System.err.println("Please download & install CS-CoreLib manually:");
+			System.err.println("Не удалось загрузить CS-CoreLib");
+			System.err.println("Пожалуйста, установите CS-CoreLib вручную:");
 			System.err.println("https://dev.bukkit.org/projects/cs-corelib");
 			System.err.println(" ");
-			System.err.println("#################### - WARNING - ####################");
+			System.err.println("################## - ПРЕДУПРЕЖДЕНИЕ - ##################");
 			System.err.println(" ");
         } finally {
             try {
                 if (input != null) input.close();
                 if (output != null) output.close();
                 System.err.println(" ");
-                System.err.println("#################### - INFO - ####################");
+                System.err.println("################## - ИНФОРМАЦИЯ - ##################");
                 System.err.println(" ");
-                System.err.println("Please restart your Server to finish the Installation");
-                System.err.println("of " + plugin.getName() + " and CS-CoreLib");
+                System.err.println("Пожалуйста, перезагрузите сервер, чтобы завершить установку");
+                System.err.println("плагина " + plugin.getName() + " и CS-CoreLib");
                 System.err.println(" ");
-                System.err.println("#################### - INFO - ####################");
+                System.err.println("################## - ИНФОРМАЦИЯ - ##################");
                 System.err.println(" ");
             } catch (IOException e) {
             	e.printStackTrace();
