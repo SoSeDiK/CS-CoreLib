@@ -92,7 +92,7 @@ public class PluginUtils {
 	public void setupConfig() {
 		FileConfiguration config = plugin.getConfig();
 		config.options().copyDefaults(true);
-		config.options().header("\nПлагин: " + plugin.getName() + "\nАвторы: " + plugin.getDescription().getAuthors().get(0) + " и SoSeDiK" + "\n\nНе изменяйте конфиг, пока сервер работает,\nиначе могут произойти плохие вещи!\n\nЭтот плагин требует CS-CoreLib для работы!\nЕсли Вы ещё не установили его, то он будет\nавтоматически загружен для Вас\n\nВ плагин встроена функция автообновления.\nЯ, SoSeDiK, намеренно рекомендую не включать её,\nчтобы не было проблем с переводом в будущем!\noptions -> auto-update: false");
+		config.options().header("\nПлагин: " + plugin.getName() + ".\nАвторы: " + plugin.getDescription().getAuthors().get(0) + " и SoSeDiK в качестве локализатора." + "\n\nНе изменяйте конфиг, пока сервер работает,\nиначе могут произойти плохие вещи!\n\nЭтот плагин требует CS-CoreLib для работы!\nЕсли Вы ещё не установили его, то он будет\nавтоматически загружен для Вас.\n\nВ плагин встроена функция автообновления.\nЯ, SoSeDiK, намеренно рекомендую не включать её,\nчтобы не было проблем с переводом в будущем!\noptions -> auto-update: false");
 		plugin.saveConfig();
 		
 		cfg = new Config(plugin);
