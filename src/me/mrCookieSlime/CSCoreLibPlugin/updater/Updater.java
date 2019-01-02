@@ -19,11 +19,12 @@ import org.json.simple.JSONValue;
 
 public class Updater {
 	
-	private static final char[] blacklist = "abcdefghijklmnopqrstuvwxyz-+_ ".toCharArray();
+	private static final char[] blacklist = "abcdefghijklmnopqrstuvwxyz-+_ ()[]".toCharArray();
+	private static final String[] development_builds = {"DEV", "EXPERIMENTAL", "BETA", "ALPHA", "UNFINISHED"};
 	
 	Plugin plugin;
 	URL url;
-	String local;
+	String localVersion;
 	Thread thread;
 	URL download;
 	File file;
@@ -32,11 +33,30 @@ public class Updater {
 	public Updater(Plugin plugin, File file, int id) {
 		this.plugin = plugin;
 		this.file = file;
-		local = plugin.getDescription().getVersion();
-		local = local.toLowerCase();
+		localVersion = plugin.getDescription().getVersion();
+
+		// Checking if current Version is a dev-build
+		for (String dev: development_builds) {
+			if (localVersion.contains(dev)) {
+                System.err.println(" ");
+                System.err.println("################# - СБОРКА РАЗРАБОТЧИКА - #################");
+                System.err.println("Похоже, что Вы используете предварительный релиз плагина " + plugin.getName());
+                System.err.println("Версия: " + localVersion);
+                System.err.println(" ");
+                System.err.println("Обновления были отключены. Используйте с осторожностью!");
+                System.err.println(" ");
+				return;
+			}
+		}
+
+		localVersion = localVersion.toLowerCase();
+
+		// Deleting all unwanted characters
         for (char blocked: blacklist) {
-        	local = local.replace(String.valueOf(blocked), "");
+        	localVersion = localVersion.replace(String.valueOf(blocked), "");
         }
+
+        // Starting download
 		try {
 			this.url = new URL("https://api.curseforge.com/servermods/files?projectIds=" + id);
 			plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
@@ -56,7 +76,18 @@ public class Updater {
 
 		@Override
 		public void run() {
-			if (connect()) check();
+			if (connect()) {
+				try {
+					check();
+				} catch(NumberFormatException x) {
+		        	System.err.println(" ");
+		        	System.err.println("#################### - ОШИБКА - ####################");
+					System.err.println("Не удалось обновить " + plugin.getName());
+					System.err.println("Нераспознанная версия: \"" + localVersion + "\"");
+					System.err.println("#################### - ОШИБКА - ####################");
+					System.err.println(" ");
+				}
+			}
 		}
 		
 		private boolean connect() {
@@ -96,7 +127,7 @@ public class Updater {
 	    }
 		
 		private void check() {
-	        String[] localSplit = local.split("\\.");
+	        String[] localSplit = localVersion.split("\\.");
 	        String[] remoteSplit = version.split("\\.");
 	        
 	        for (int i = 0; i < remoteSplit.length; i++) {
@@ -182,7 +213,7 @@ public class Updater {
 			                if (output != null) output.close();
 			                System.err.println(" ");
 			                System.err.println("#################### - ОБНОВЛЕНИЕ - ####################");
-			                System.err.println(plugin.getName() + " был успешно обновлён (" + local + " -> " + version + ")");
+			                System.err.println(plugin.getName() + " был успешно обновлён (" + localVersion + " -> " + version + ")");
 			                System.err.println("Пожалуйста, перезагрузите сервер, чтобы использовать новую версию");
 			                System.err.println(" ");
 			            } catch (IOException e) {
